@@ -8,6 +8,7 @@ var plinkos = [];
 var divisions =[];
 var divisionHeight=300;
 var score =0;
+
 function setup() {
   createCanvas(800, 800);
   engine = Engine.create();
@@ -60,13 +61,6 @@ function setup() {
     plinkos.push(new Plinko(j,375));
   }
 
-
-  //criar objetos de partículas
-  if(frameCount % 60 === 0){
-    particles.push(new Particles(random(width/2-10, width/2+10), 10, 10));
-    this.color=color(random(0, 255), random(0,255), random(0,255));
-  }
-  
     
 }
  
@@ -75,6 +69,8 @@ function setup() {
 function draw() {
   background("black");
   textSize(20)
+  
+  console.log(particles);
  
   Engine.update(engine);
   ground.display();
@@ -92,6 +88,12 @@ function draw() {
   //exibir as partículas
   for (var p = 0; p < particles.length; p++) {
     particles[p].display();
+  }
+
+  //criar objetos de partículas
+  if(frameCount % 90 === 0){
+    particles.push(new Particles(random(width/2-10, width/2+10), 10, 10));
+    
   }
 
 }
